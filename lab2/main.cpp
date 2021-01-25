@@ -1,7 +1,7 @@
 #include <iostream>
 #include <gtest/gtest.h>
 #include <locale.h>
-//#include <gmock/gmock.h>
+
 
 #include "Calculator.h"
 #include "Exceptions.h"
