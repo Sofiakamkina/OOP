@@ -5,12 +5,13 @@
 class OperatorFactory
 {
 private:
-    std::map<std::string,std::shared_ptr<Operator>> listOfOerators;
-
-    std::shared_ptr<Operator> p;
-    Operand first;
-    Operand second;
+    std::map<std::string, Operator*> makers;
 public:
     OperatorFactory();
-    std::shared_ptr<Operator> getOperationType(std::vector<string> tokens, Context *context);
+
+    static OperatorFactory& Instance();
+
+    Operator* getOperationType(std::vector<string> tokens, Context *context);
+
+    void registerOperationTypeMaker(const std::string& operatorName, IOperatorMaker* maker);
 };
