@@ -1,8 +1,13 @@
+#include <fstream>
+#include <string>
+#include <map>
+#include <iostream>
+
 using std::map;
 class Input
 {
 public:
-    virtual string getCommandLine() = 0;
+    virtual std::string getCommandLine() = 0;
     virtual bool hasMoreInput() = 0;
     virtual void closeInput() = 0;
 };
@@ -10,7 +15,7 @@ public:
 class InputConsole: public Input
 {
 public:
-    string getCommandLine();
+    std::string getCommandLine();
     bool hasMoreInput();
     void closeInput();
 };
@@ -21,7 +26,7 @@ private:
     std::ifstream in;
 public:
     InputFile(char* fileName);
-    string getCommandLine();
+    std::string getCommandLine();
     bool hasMoreInput();
     void closeInput();
 };
