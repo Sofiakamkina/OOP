@@ -1,6 +1,6 @@
 #include "Calculator.h"
 #include "Exceptions.h"
-#include "consts.h"
+
 Calculator::Calculator(int argc, char* argv[])
 {
     switch(argc)
@@ -24,7 +24,7 @@ void Calculator::run()
     {
         try
         {
-            string inputLine = input->getCommandLine();
+            std::string inputLine = input->getCommandLine();
             if(inputLine.empty())
                 closeProgram();
             else
