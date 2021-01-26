@@ -1,5 +1,5 @@
 #include <iostream>
-#include <gtest/gtest.h>
+//#include <gtest/gtest.h>
 #include <locale.h>
 
 
@@ -7,9 +7,9 @@
 #include "Exceptions.h"
 int main(int argc, char * argv[])
 {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-    /*try{
+//    testing::InitGoogleTest(&argc, argv);
+//    return RUN_ALL_TESTS();
+    try{
         Calculator calculator(argc,argv);
         calculator.run();
     }
@@ -17,5 +17,5 @@ int main(int argc, char * argv[])
     {
         std::cerr<<e.what();
     }
-    return 0;*/
+    return 0;
 }
