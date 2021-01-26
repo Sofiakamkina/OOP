@@ -12,26 +12,27 @@ OperatorFactory& OperatorFactory::Instance()
 
 Operator* OperatorFactory::getOperationType(std::vector<string> tokens, Context *context)
 {
-    auto i = _makers.find(tokens[0]);
-    if (i == _makers.end())
+    auto i = makers.find(tokens[0]);
+    if (i == makers.end())
     {
         throw exceptions::WrongNameOfOperation();
     }
-    IShapeMaker* maker = i->second;
+    IOperatorTypeMaker* maker = i->second;
 
-    Operator* operator = maker->Create();
+    Operator* operation = maker->Create();
     Operand first = Operand(tokens[1],context->definitions);
     Operand second = Operand(tokens[2],context->definitions);
 
-    operator->setOperands(first, second);
-    return operator;
+    operation->setOperands(first, second);
+    return operation;
 }
 
-void registerOperationTypeMaker(const std::string& operatorName, IOperatorMaker* maker)
+void OperatorFactory::registerOperationTypeMaker(const std::string& operatorName, IOperatorTypeMaker* maker)
 {
-    if (_makers.find(key) != _makers.end())
+    if (makers.find(operatorName) != makers.end())
     {
-        throw new std::exception("Multiple makers for given key!");
+        throw exceptions::TooManyOperatorTypeMakers();
     }
-    _makers[key] = maker;
+    makers[operatorName] = maker;
 }
+
