@@ -1,6 +1,15 @@
-class IOperatorTypeMaker
-{
+#include "Operator.h"
+#include "OperatorFactory.h"
+#include <string>
+
+template<typename T>
+class OperatorTypeMaker : public IOperatorTypeMaker {
 public:
-    virtual Operator * Create() const = 0;
-    virtual ~IOperatorTypeMaker() {}
+    OperatorTypeMaker(const std::string &key) {
+        OperatorFactory::Instance().registerOperationTypeMaker(key, this);
+    }
+
+    virtual Operator *Create() const {
+        return new T();
+    }
 };
