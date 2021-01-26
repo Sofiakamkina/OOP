@@ -6,6 +6,8 @@
 #include "Operand.h"
 #include "Parser.h"
 #include "consts.h"
+#include "OperatorTypeMaker.h"
+
 void Iprocessor::calculate(std::string &commandline, Context *context)
 {
     Parser parser;
@@ -15,16 +17,16 @@ void Iprocessor::calculate(std::string &commandline, Context *context)
         return;
     OperatorFactory operatorFactory;
 
-    static Common::ShapeMaker<Pop> popMaker("pop");
-    static Common::ShapeMaker<Push> pushMaker("push");
-    static Common::ShapeMaker<Plus> plusMaker("+");
-    static Common::ShapeMaker<Minus> minusMaker("-");
-    static Common::ShapeMaker<Division> divisionMaker("/");
-    static Common::ShapeMaker<Multiplication> multiplicationMaker("*");
-    static Common::ShapeMaker<Sqrt> sqrtMaker("sqrt");
-    static Common::ShapeMaker<Print> printMaker("print");
-    static Common::ShapeMaker<Definition> defineMaker("define");
+    static OperatorTypeMaker<Pop> popMaker("pop");
+    static OperatorTypeMaker<Push> pushMaker("push");
+    static OperatorTypeMaker<Plus> plusMaker("+");
+    static OperatorTypeMaker<Minus> minusMaker("-");
+    static OperatorTypeMaker<Division> divisionMaker("/");
+    static OperatorTypeMaker<Multiplication> multiplicationMaker("*");
+    static OperatorTypeMaker<Sqrt> sqrtMaker("sqrt");
+    static OperatorTypeMaker<Print> printMaker("print");
+    static OperatorTypeMaker<Definition> defineMaker("define");
 
-    std::shared_ptr<Operator> action = operatorFactory.getOperationType(tokens, context);
+    Operator* action = operatorFactory.getOperationType(tokens, context);
     action->calculate(context);
 }
