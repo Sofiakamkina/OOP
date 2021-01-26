@@ -1,44 +1,45 @@
 #pragma once
+
 #include <exception>
-namespace exceptions
-{
-    class WrongNumberOfParamter: public std::exception
-    {
+
+namespace exceptions {
+    class WrongNumberOfParamter : public std::exception {
     public:
         const char *what() const noexcept;
     };
-    class OpenFile: public std::exception
-    {
+
+    class OpenFile : public std::exception {
     public:
-        const char *what()  const noexcept;
+        const char *what() const noexcept;
     };
 
-class WrongNameOfOperation:public std::exception
-    {
+    class WrongNameOfOperation : public std::exception {
     public:
-        const char *what()  const noexcept;
+        const char *what() const noexcept;
     };
 
-    class StackIsEmpty:public std::exception
-    {
+    class StackIsEmpty : public std::exception {
     public:
-        const char *what()  const noexcept;
+        const char *what() const noexcept;
     };
 
-    class notEnoughParameters:public std::exception
-    {
+    class notEnoughParameters : public std::exception {
     public:
-        const char *what()  const noexcept;
-    };
-    class DivizionByZero:public std::exception
-    {
-    public:
-        const char *what()  const noexcept;
+        const char *what() const noexcept;
     };
 
-    class InvalidOperands: public std::exception
-    {
+    class DivizionByZero : public std::exception {
     public:
-        const char *what()  const noexcept;
+        const char *what() const noexcept;
+    };
+
+    class InvalidOperands : public std::exception {
+    public:
+        const char *what() const noexcept;
+    };
+
+    class TooManyOperatorTypeMakers : public std::exception {
+    public:
+        const char *what() const noexcept;
     };
 }
