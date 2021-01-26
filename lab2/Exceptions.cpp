@@ -33,3 +33,8 @@ const char* exceptions::InvalidOperands::what() const noexcept
 {
     return "invalid operands\n";
 }
+
+const char* exceptions::TooManyOperatorTypeMakers::what() const noexcept
+{
+    return "More than 1 maker was registered.\n";
+}
