@@ -1,8 +1,8 @@
 #include "Input.h"
 
-string InputConsole::getCommandLine()
+std::string InputConsole::getCommandLine()
 {
-    string result;
+    std::string result;
     std::getline(std::cin,result);
     return result;
 }
@@ -20,12 +20,11 @@ InputFile::InputFile(char* fileName)
     in.open(fileName);
 }
 
-string InputFile::getCommandLine()
+std::string InputFile::getCommandLine()
 {
-    string result;
+    std::string result;
     std::getline(in,result);
     return result;
-
 }
 
 bool InputFile::hasMoreInput()
